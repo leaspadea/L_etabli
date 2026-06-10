@@ -1,0 +1,42 @@
+:root {
+    // Couleurs - commune
+    --color-bg-primary: #F7ECD8;
+    --color-bg-secondary: #FBFAF1;
+    --color-bg-warm: #F1E8D7;
+    --color-bg-deep: #E8DBC2;
+    --color-ink: #1A1815;
+    --color-ink-soft: #3A352E;
+    --color-ink-pale: #6B6358;
+    --color-accent: #A24B2A;
+    --color-accent-deep: #7A3416;
+
+    // Couleurs - Camcam
+    // Pas de tokens Camcam : la sous-palette réutilise volontairement
+    // la palette commune (--color-ink, --color-ink-pale, --color-bg-secondary).
+    // Voir SPECS.md §1 — Sous-palette Camcam.
+
+    // Couleurs - Momo
+    --color-momo-lavender: #A791DF;
+    --color-momo-coral: #FE6B86;
+    --color-momo-mint: #75E290;
+    --color-momo-cream: #FFDD99;
+
+
+    // Espacements
+    --s-1: 4px;
+    --s-2: 8px;
+    --s-3: 12px;
+    --s-4: 16px;
+    --s-5: 24px;
+    --s-6: 32px;
+    --s-7: 48px;
+    --s-8: 64px;
+    --s-9: 96px;
+    --s-10: 128px;
+
+
+    // Typographie - famille
+    --f-display: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+    --f-body: "DM Sans", -apple-system, "Segoe UI", sans-serif;
+    --f-hand: "Caveat", "Bradley Hand", cursive;
+}
