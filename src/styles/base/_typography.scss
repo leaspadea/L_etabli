@@ -1,0 +1,64 @@
+@use "../abstracts/breakpoints" as bp;
+
+// Typographie globale
+
+body {
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-plaster-cream);
+  background-color: var(--color-wall-dark);
+
+  @include bp.respond-to(desktop) {
+    font-size: 17px;
+  }
+}
+
+// Titres
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--f-display);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 0.85;
+  font-weight: 500;
+
+  @include bp.respond-to(desktop) {
+    font-size: 168px;
+  }
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 0.95;
+
+  @include bp.respond-to(desktop) {
+    font-size: 72px;
+  }
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  font-style: italic;
+
+  @include bp.respond-to(desktop) {
+    font-size: 32px;
+  }
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 500;
+
+  @include bp.respond-to(desktop) {
+    font-size: 30px;
+  }
+}
+
+p {
+  max-width: 64ch;
+}

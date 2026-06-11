@@ -1,0 +1,17 @@
+// Breakpoints
+
+$break-mobile-large: 601px;   // au-delà : mobile large
+$break-tablet: 721px;          // au-delà : tablette
+$break-desktop: 961px;         // au-delà : desktop
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (min-width: $break-tablet) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: $break-desktop) { @content; }
+  } @else if $breakpoint == mobile-large {
+    @media (min-width: $break-mobile-large) { @content; }
+  } @else {
+    @error "Breakpoint inconnu: #{$breakpoint}";
+  }
+}
