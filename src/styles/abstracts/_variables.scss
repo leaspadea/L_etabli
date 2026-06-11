@@ -1,25 +1,37 @@
 :root {
-    // Couleurs - commune
-    --color-bg-primary: #F7ECD8;
-    --color-bg-secondary: #FBFAF1;
-    --color-bg-warm: #F1E8D7;
-    --color-bg-deep: #E8DBC2;
-    --color-ink: #1A1815;
-    --color-ink-soft: #3A352E;
-    --color-ink-pale: #6B6358;
-    --color-accent: #A24B2A;
-    --color-accent-deep: #7A3416;
+    // Couleurs 
+
+    // Palette principale — murs & matières du salon
+    --color-wall-dark: #383A3C;
+    --color-wall-deeper: #2A2C2E;
+    --color-wall-patina: #4D4F50;
+    --color-dado-burgundy: #5C2A28;
+    --color-dado-deep: #3F1C1B;
+    --color-plaster-cream: #E6D9BE;
+    --color-plaster-pale: #F2EAD4;
+
+    // Or & métal — l'accent commun
+    --color-gold: #C9A24B;
+    --color-gold-bright: #E6C465;
+    --color-gold-deep: #8C6A28;
+    --color-gold-shadow: #54391A;
+
+    // Encre & accents secondaires
+    --color-ink: #14110E;
+    --color-ink-soft: #2A2520;
+    --color-mustard: #D9A82A;
+    --color-wood-honey: #A06B3F;
 
     // Couleurs - Camcam
-    // Pas de tokens Camcam : la sous-palette réutilise volontairement
-    // la palette commune (--color-ink, --color-ink-pale, --color-bg-secondary).
-    // Voir SPECS.md §1 — Sous-palette Camcam.
+    --color-camcam-ink: var(--color-ink);
+    --color-camcam-anthracite: var(--color-wall-dark);
+    --color-camcam-plaster: var(--color-plaster-cream);
 
     // Couleurs - Momo
-    --color-momo-lavender: #A791DF;
-    --color-momo-coral: #FE6B86;
-    --color-momo-mint: #75E290;
-    --color-momo-cream: #FFDD99;
+    --color-momo-rose: #C9748A;
+    --color-momo-jade: #6FA08C;
+    --color-momo-amber: #D9AE5C;
+    --color-momo-plum: #6E5780;
 
 
     // Espacements
@@ -36,7 +48,7 @@
 
 
     // Typographie - famille
-    --f-display: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+    --f-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
     --f-body: "DM Sans", -apple-system, "Segoe UI", sans-serif;
     --f-hand: "Caveat", "Bradley Hand", cursive;
 }
