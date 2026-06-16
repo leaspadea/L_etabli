@@ -1,0 +1,191 @@
+---
+// Header.astro
+// Pas de props pour l'instant — le Header est identique sur les 3 pages.
+// Plus tard on pourrait passer une variante (ex: "dark" / "light"
+// pour la page Camcam qui bascule en sombre profond).
+---
+
+<header class="site-header">
+    <nav class="site-nav" aria-label="Navigation principale">
+        <!-- Logo à gauche. Cliquable, ramène à l'accueil. -->
+        <a href="/" class="site-nav__logo">L'établi.</a>
+
+        <!-- Bouton burger : visible uniquement en mobile (on le cache en desktop via CSS).
+         aria-expanded = état du menu (false = fermé). Le script va le basculer.
+         aria-controls = pointe vers l'ID du <ul> que ce bouton ouvre/ferme. -->
+        <button
+            class="site-nav__burger"
+            aria-expanded="false"
+            aria-controls="main-nav-list"
+            aria-label="Ouvrir le menu"
+            type="button"
+        >
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+        </button>
+
+        <!-- La liste de liens. data-open contrôle l'affichage en mobile.
+         role="list" parce qu'on enlève les bullets (cf reset.scss ligne 58). -->
+        <ul
+            id="main-nav-list"
+            class="site-nav__list"
+            role="list"
+            data-open="false"
+        >
+            <li><a href="#salon">Le salon</a></li>
+            <li><a href="/camcam">Camcam</a></li>
+            <li><a href="/momo">Momo</a></li>
+            <li><a href="#infos">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style lang="scss">
+    @use "../../styles/abstracts/breakpoints" as bp;
+
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgb(from var(--color-wall-dark) r g b / 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgb(from var(--color-gold) r g b / 0.15);
+        padding: 14px 16px;
+
+        @include bp.respond-to(desktop) {
+            padding: 20px 32px;
+        }
+    }
+
+    // ─── La nav (logo à gauche, burger ou liste à droite) ──────────────
+    .site-nav {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    // ─── Le logo ───────────────────────────────────────────────────────
+    .site-nav__logo {
+        font-family: var(--f-display);
+        font-style: italic;
+        font-size: 25px;
+        color: var(--color-plaster-cream);
+        text-decoration: none;
+        position: relative;
+        z-index: 2;
+
+        @include bp.respond-to(desktop) {
+            font-size: 24px;
+        }
+    }
+
+    // ─── Le burger ─────────────────────────────────────────────────────
+    .site-nav__burger {
+        background: transparent;
+        border: 0;
+        padding: 8px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: relative;
+        z-index: 10;
+
+        @include bp.respond-to(desktop) {
+            display: none;
+        }
+
+        &[aria-expanded="true"] {
+            .burger-bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .burger-bar:nth-child(2) {
+                opacity: 0;
+            }
+            .burger-bar:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+    }
+
+    .burger-bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--color-plaster-cream);
+    }
+
+    // ─── La liste de liens ─────────────────────────────────────────────
+    .site-nav__list {
+        // ─── Position fixe à droite de l'écran ─────────────────
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        z-index: 1;  
+        width: 280px;
+        max-width: 65vw;
+        background: var(--color-wall-deeper);
+        border-left: 1px solid var(--color-gold-shadow);
+        padding: 80px 32px 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 24px;
+
+        transform: translateX(100%);
+        transition: transform 300ms ease-out;
+
+        &[data-open="true"] {
+            transform: translateX(0);
+        }
+
+
+        @include bp.respond-to(desktop) {
+            position: static;
+            width: auto;
+            height: auto;
+            max-width: none;
+            background: transparent;
+            border-left: 0;
+            padding: 0;
+            transform: none;
+            flex-direction: row;
+            align-items: center;
+            gap: 32px;
+        }
+    }
+
+    .site-nav__list a {
+        text-decoration: none;
+        color: var(--color-plaster-cream);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        transition: color 200ms ease-out;
+    }
+
+    .site-nav__list a:hover {
+        color: var(--color-gold-bright);
+    }
+</style>
+
+<script>
+    const burger =
+        document.querySelector<HTMLButtonElement>(".site-nav__burger");
+    const navList = document.querySelector<HTMLUListElement>("#main-nav-list");
+
+    burger?.addEventListener("click", () => {
+        // On lit l'état actuel via le data-attribute
+        const isOpen = navList?.dataset.open === "true";
+
+        // On bascule l'état (le ! force le type : on sait que navList existe ici)
+        if (navList) navList.dataset.open = String(!isOpen);
+        burger.setAttribute("aria-expanded", String(!isOpen));
+        burger.setAttribute(
+            "aria-label",
+            !isOpen ? "Fermer le menu" : "Ouvrir le menu",
+        );
+    });
+</script>
