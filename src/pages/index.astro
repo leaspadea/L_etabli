@@ -1,12 +1,14 @@
 ---
+import Hero from "../components/home/Hero.astro";
 import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro"
+import Footer from "../components/layout/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="L'Établi — Salon de tatouage à Caen">
-  <Header/>
-  <h1>Bienvenue chez L'Établi</h1>
-  <p>Le contenu de la page accueil va ici.</p>
-  <Footer/>
+  <Header />
+  <main>
+    <Hero />
+  </main>
+  <Footer />
 </Layout>
