@@ -1,0 +1,108 @@
+---
+import Container from "./Container.astro";
+---
+
+<footer class="site-footer">
+    <Container>
+        <div class="site-footer__cols">
+            <div>
+                <h2 class="site-footer__heading">Le salon</h2>
+                <p class="site-footer__logo">L'établi.</p>
+                <p>Salon de tatouage · Caen</p>
+            </div>
+
+            <div>
+                <h2 class="site-footer__heading">Contact</h2>
+                <address class="site-footer__contact">
+                    57 Rue de Bras<br />
+                    14000 Caen<br />
+                    <a href="tel:+33214748856">02 14 74 88 56</a><br />
+                    <a href="mailto:letablitattooshop@gmail.com"
+                        >letablitattooshop@gmail.com</a
+                    ><br />
+                    <a
+                        href="https://www.instagram.com/letablitattoo"
+                        target="_blank"
+                        rel="noopener">@letablitattoo</a
+                    >
+                </address>
+            </div>
+
+            <nav aria-label="Pied de page">
+                <h2 class="site-footer__heading">Navigation</h2>
+                <ul role="list">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/camcam">Camcam</a></li>
+                    <li><a href="/momo">Momo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p>© L'établi 2026</p>
+            <a href="#">Mentions légales</a>
+            <a href="#">Politique de confidentialité</a>
+        </div>
+    </Container>
+</footer>
+
+<style lang="scss">
+    @use "../../styles/abstracts/breakpoints" as bp;
+
+    .site-footer {
+        background-color: var(--color-wall-deeper);
+        padding-top: 32px;
+        border-top: 1px solid var(--color-gold-shadow);
+    }
+
+    .site-footer__cols {
+        margin-bottom: 24px;
+        @include bp.respond-to(desktop) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            margin-bottom: 32px;
+        }
+    }
+
+    .site-footer__contact {
+        font-style: normal;
+    }
+
+    .site-footer__heading {
+        font-family: var(--f-body);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--color-gray-muted);
+        margin: 12px 0;
+    }
+
+    .site-footer__bottom {
+        font-style: italic;
+        font-size: 13px;
+        font-weight: 400;
+        padding-bottom: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--color-gray-muted);
+
+        @include bp.respond-to(desktop) {
+            flex-direction: row;
+            padding: 12px;
+            gap: 12px;
+        }
+    }
+
+    .site-footer__bottom a {
+        color: inherit;
+        text-decoration-color: currentColor;
+        transition: text-decoration-color 200ms ease-out;
+    }
+
+    .site-footer__bottom a:hover {
+        text-decoration-color: var(--color-plaster-cream);
+    }
+</style>
