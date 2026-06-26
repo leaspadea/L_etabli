@@ -3,316 +3,293 @@ import Container from "../layout/Container.astro";
 ---
 
 <section class="tatoueuses">
-    <Container>
-        <header class="tatoueuses__header">
-            <h2>Les tatoueuses.</h2>
-            <p class="tatoueuses__subtitle">Deux univers complémentaires.</p>
-        </header>
+  <Container>
+    <header class="tatoueuses__header">
+      <h2>Les tatoueuses.</h2>
+      <p class="section-subtitle">Deux univers complémentaires.</p>
+    </header>
 
-        <div class="mirror">
-            <!-- Camcam : sombre, à gauche -->
-            <article class="mirror__card mirror__card--camcam">
-                <img
-                    class="mirror__portrait"
-                    src="/assets/photo_camcam.png"
-                    alt="Camcam, tatoueuse"
-                    loading="lazy"
-                />
-                <div class="mirror__card__text">
-                    <h3 class="mirror__name">Camcam</h3>
-                    <p class="mirror__style">Noir &amp; gris · brut</p>
-                </div>
-                <a class="mirror__btn" href="/camcam">Découvrir son univers</a>
-            </article>
-
-            <span class="mirror__clasp" aria-hidden="true"></span>
-
-            <!-- Momo : clair, à droite -->
-            <article class="mirror__card mirror__card--momo">
-                <img
-                    class="mirror__portrait"
-                    src="/assets/photo_momo.png"
-                    alt="Momo l'escargot, tatoueuse"
-                    loading="lazy"
-                />
-                <div class="mirror__card__text">
-                    <h3 class="mirror__name">Momo l'escargot</h3>
-                    <p class="mirror__style">Manga · couleur</p>
-                </div>
-                <a class="mirror__btn" href="/momo">Découvrir son univers</a>
-            </article>
+    <div class="mirror">
+      <!-- Camcam : sombre, à gauche -->
+      <article class="mirror__card mirror__card--camcam">
+        <img
+          class="mirror__portrait"
+          src="/assets/photo_camcam.png"
+          alt="Camcam, tatoueuse"
+          loading="lazy"
+        />
+        <div class="mirror__card__text">
+          <h3 class="mirror__name">Camcam</h3>
+          <p class="mirror__style">Noir &amp; gris · brut</p>
         </div>
-    </Container>
+        <a class="mirror__btn" href="/camcam">Découvrir son univers</a>
+      </article>
+
+      <span class="mirror__clasp" aria-hidden="true"></span>
+
+      <!-- Momo : clair, à droite -->
+      <article class="mirror__card mirror__card--momo">
+        <img
+          class="mirror__portrait"
+          src="/assets/photo_momo.png"
+          alt="Momo l'escargot, tatoueuse"
+          loading="lazy"
+        />
+        <div class="mirror__card__text">
+          <h3 class="mirror__name">Momo l'escargot</h3>
+          <p class="mirror__style">Manga · couleur</p>
+        </div>
+        <a class="mirror__btn" href="/momo">Découvrir son univers</a>
+      </article>
+    </div>
+  </Container>
 </section>
 
 <style lang="scss">
-    @use "../../styles/abstracts/breakpoints" as bp;
+  @use "../../styles/abstracts/breakpoints" as bp;
+  @use "../../styles/abstracts/mixins" as *;
 
-    .tatoueuses {
-        padding-block: var(--s-8);
+  .tatoueuses {
+    padding-block: var(--s-8);
 
-        @include bp.respond-to(desktop) {
-            padding-block: var(--s-9);
-        }
+    @include bp.respond-to(desktop) {
+      padding-block: var(--s-9);
     }
+  }
 
-    .tatoueuses__header {
-        gap: var(--s-3);
-        display: flex;
-        flex-direction: column;
-        margin-bottom: var(--s-6);
-        @include bp.respond-to(desktop) {
-            align-items: center;
-        }
+  .tatoueuses__header {
+    gap: var(--s-3);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--s-6);
+    @include bp.respond-to(desktop) {
+      align-items: center;
     }
+  }
 
-    .tatoueuses__subtitle {
-        font-size: 22px;
-        line-height: 1.2;
-        font-style: italic;
-        font-family: var(--f-display);
+  .tatoueuses__header h2 {
+    color: var(--color-gold-bright);
+  }
+
+  .tatoueuses h3 {
+    font-size: 36px;
+    line-height: 0.95;
+    font-style: normal;
+
+    @include bp.respond-to(desktop) {
+      font-size: 72px;
     }
+  }
 
-    .tatoueuses__header h2 {
-        color: var(--color-gold-bright);
+  .mirror {
+    position: relative;
+    display: grid;
+    gap: var(--s-7);
+    @include bp.respond-to(desktop) {
+      grid-template-columns: 1fr 1fr;
     }
+  }
 
-    .tatoueuses h3 {
-        font-size: 36px;
-        line-height: 0.95;
-        font-style: normal;
+  .mirror::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold) 18%,
+      var(--color-gold-bright) 50%,
+      var(--color-gold) 82%,
+      transparent
+    );
+    pointer-events: none;
 
-        @include bp.respond-to(desktop) {
-            font-size: 72px;
-        }
+    @include bp.respond-to(desktop) {
+      left: 50%;
+      right: auto;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      height: auto;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        180deg,
+        transparent,
+        var(--color-gold) 18%,
+        var(--color-gold-bright) 50%,
+        var(--color-gold) 82%,
+        transparent
+      );
     }
+  }
 
-    .mirror {
-        position: relative;
-        display: grid;
-        gap: 48px;
-        @include bp.respond-to(desktop) {
-            grid-template-columns: 1fr 1fr;
-        }
+  .mirror__clasp {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      var(--color-gold-deep),
+      var(--color-gold-bright),
+      var(--color-gold),
+      var(--color-gold-bright),
+      var(--color-gold-deep)
+    );
+    border: 1px solid var(--color-gold);
+    display: grid;
+    place-items: center;
+
+    box-shadow: 0 0 12px -2px var(--color-ink);
+  }
+
+  .mirror__clasp::before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-color: var(--color-ink);
+    -webkit-mask: url("/assets/logo_coeur.png") center / contain no-repeat;
+    mask: url("/assets/logo_coeur.png") center / contain no-repeat;
+  }
+
+  .mirror__clasp::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--color-gold-deep);
+    box-shadow: 43px 0 0 var(--color-gold-deep);
+  }
+
+  .mirror__card {
+    @include boiserie(10px, -8px);
+    padding: var(--s-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    border: 1px solid var(--color-gold-shadow);
+  }
+
+  // Camcam : sombre, tout calé à gauche
+  .mirror__card--camcam {
+    background: color-mix(
+      in srgb,
+      var(--color-wall-deeper),
+      var(--color-ink) 50%
+    );
+    color: var(--color-plaster-cream);
+    text-align: left;
+    align-items: flex-start;
+    @include bp.respond-to(desktop) {
+      align-items: center;
+      text-align: center;
     }
+  }
 
-    .mirror::before {
-        content: "";
-        position: absolute;
-        z-index: 1;
-        left: 0;
-        right: 0;
-        top: 50%;
-        height: 2px;
-        transform: translateY(-50%);
-        background: linear-gradient(
-            90deg,
-            transparent,
-            var(--color-gold) 18%,
-            var(--color-gold-bright) 50%,
-            var(--color-gold) 82%,
-            transparent
-        );
-        pointer-events: none;
-
-        @include bp.respond-to(desktop) {
-            left: 50%;
-            right: auto;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            height: auto;
-            transform: translateX(-50%);
-            background: linear-gradient(
-                180deg,
-                transparent,
-                var(--color-gold) 18%,
-                var(--color-gold-bright) 50%,
-                var(--color-gold) 82%,
-                transparent
-            );
-        }
+  // Momo : clair, tout calé à droite — le miroir
+  .mirror__card--momo {
+    background: var(--color-plaster-cream);
+    color: var(--color-ink);
+    align-items: flex-end;
+    text-align: right;
+    @include bp.respond-to(desktop) {
+      align-items: center;
+      text-align: center;
     }
+  }
 
-    .mirror__clasp {
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 64px;
-        height: 36px;
-        border-radius: 50%;
-        background: linear-gradient(
-            135deg,
-            var(--color-gold-deep),
-            var(--color-gold-bright),
-            var(--color-gold),
-            var(--color-gold-bright),
-            var(--color-gold-deep)
-        );
-        border: 1px solid var(--color-gold);
-        display: grid;
-        place-items: center;
+  .mirror__portrait {
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+  }
 
-        box-shadow: 0 0 12px -2px var(--color-ink);
-    }
+  .mirror__btn {
+    margin-top: auto;
+    z-index: 0;
+    padding: var(--s-3);
+    border: 1px solid var(--color-gold-deep);
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition:
+      box-shadow 600ms ease,
+      color 300ms ease;
+  }
 
-    .mirror__clasp::before {
-        content: "";
-        width: 22px;
-        height: 22px;
-        background-color: var(--color-ink);
-        -webkit-mask: url("/assets/logo_coeur.png") center / contain no-repeat;
-        mask: url("/assets/logo_coeur.png") center / contain no-repeat;
-    }
+  .mirror__btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      135deg,
+      var(--color-gold-deep),
+      var(--color-gold-bright),
+      var(--color-gold),
+      var(--color-gold-bright),
+      var(--color-gold-deep)
+    );
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
 
-    .mirror__clasp::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 9px;
-        transform: translateY(-50%);
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: var(--color-gold-deep);
-        box-shadow: 42px 0 0 var(--color-gold-deep);
-    }
+  .mirror__btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent
+    );
+    transform: translateX(-250%) skewX(-20deg);
+    transition: transform 600ms ease;
+  }
 
-    .mirror__card {
-        padding: var(--s-7);
-        display: flex;
-        flex-direction: column;
-        gap: var(--s-4);
-        border: 1px solid var(--color-gold-shadow);
-        box-shadow:
-            inset 10px 10px 0 -8px rgba(255, 255, 255, 0.06),
-            inset -10px -10px 0 -8px rgba(0, 0, 0, 0.35);
-    }
+  .mirror__btn:hover::before {
+    opacity: 1;
+  }
 
-    .mirror__card::before {
-        content: "";
-        position: absolute;
-        inset: 14px;
-        border: 1px solid rgba(0, 0, 0, 0.4);
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-        pointer-events: none;
-
-        @include bp.respond-to(desktop) {
-            inset: 25px;
-        }
-    }
-
-    // Camcam : sombre, tout calé à gauche
-    .mirror__card--camcam {
-        background: color-mix(
-            in srgb,
-            var(--color-wall-deeper),
-            var(--color-ink) 50%
-        );
-        color: var(--color-plaster-cream);
-        text-align: left;
-        align-items: flex-start;
-        position: relative;
-        @include bp.respond-to(desktop) {
-            align-items: center;
-            text-align: center;
-        }
-    }
-
-    // Momo : clair, tout calé à droite — le miroir
-    .mirror__card--momo {
-        background: var(--color-plaster-cream);
-        color: var(--color-ink);
-        align-items: flex-end;
-        text-align: right;
-        position: relative;
-        @include bp.respond-to(desktop) {
-            align-items: center;
-            text-align: center;
-        }
-    }
-
-    .mirror__portrait {
-        width: 100%;
-        max-width: 360px;
-        aspect-ratio: 3 / 4;
-        object-fit: contain;
-    }
-
-    .mirror__btn {
-        margin-top: auto;
-        z-index: 0;
-        padding: var(--s-3);
-        border: 1px solid var(--color-gold-deep);
-        text-decoration: none;
-        width: 100%;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        transition:
-            box-shadow 600ms ease,
-            color 300ms ease;
-    }
-
-    .mirror__btn::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: linear-gradient(
-            135deg,
-            var(--color-gold-deep),
-            var(--color-gold-bright),
-            var(--color-gold),
-            var(--color-gold-bright),
-            var(--color-gold-deep)
-        );
-        opacity: 0;
-        transition: opacity 300ms ease;
-    }
-
+  .mirror__btn:hover::after {
+    transform: translateX(350%) skewX(-20deg);
+  }
+  .mirror__btn:hover {
+    box-shadow: 0 0 12px -2px var(--color-gold-deep);
+  }
+  @media (prefers-reduced-motion: reduce) {
     .mirror__btn::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 40%;
-        background: linear-gradient(
-            100deg,
-            transparent,
-            rgba(255, 255, 255, 0.45),
-            transparent
-        );
-        transform: translateX(-250%) skewX(-20deg);
-        transition: transform 600ms ease;
+      transition: none;
     }
+  }
 
-    .mirror__btn:hover::before {
-        opacity: 1;
-    }
+  .mirror__card--camcam .mirror__btn:hover {
+    color: var(--color-ink);
+  }
 
-    .mirror__btn:hover::after {
-        transform: translateX(350%) skewX(-20deg);
-    }
-    .mirror__btn:hover {
-        box-shadow: 0 0 12px -2px var(--color-gold-deep);
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .mirror__btn::after {
-            transition: none;
-        }
-    }
-
-    .mirror__card--camcam .mirror__btn:hover {
-        color: var(--color-ink);
-    }
-
-    .mirror__card--camcam a {
-        color: inherit;
-    }
-    .mirror__card--momo a {
-        color: inherit;
-    }
+  .mirror__card--camcam a {
+    color: inherit;
+  }
+  .mirror__card--momo a {
+    color: inherit;
+  }
 </style>

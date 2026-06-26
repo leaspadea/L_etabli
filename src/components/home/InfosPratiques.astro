@@ -1,0 +1,297 @@
+---
+import Container from "../layout/Container.astro";
+---
+
+<!-- id="infos" : cible du lien "Contact" du header -->
+<section class="infos" id="infos">
+  <Container>
+    <div class="infos__layout">
+      <div class="infos__heading">
+        <h2>Infos pratiques.</h2>
+        <p class="section-subtitle">
+          Tout ce qu'il faut savoir avant de pousser la porte de l'atelier.
+        </p>
+      </div>
+      <div class="infos__content">
+        <!-- Coordonnées : liste de définitions (label → valeur) -->
+        <dl class="infos__details">
+          <div>
+            <dt class="eyebrow">Adresse</dt>
+            <dd>
+              57 Rue de Bras,<br />14000 Caen
+            </dd>
+          </div>
+          <div>
+            <dt class="eyebrow">Horaires</dt>
+            <dd>Du mardi au samedi <br /> 12h – 17h</dd>
+            <dd>Dimanche &amp; lundi · fermé</dd>
+          </div>
+
+          <div>
+            <dt class="eyebrow">Contact</dt>
+            <dd><a href="tel:+33214748856">02 14 74 88 56</a></dd>
+            <dd>
+              <a href="mailto:letablitattooshop@gmail.com"
+                >letablitattooshop@gmail.com</a
+              >
+            </dd>
+            <dd>
+              <a
+                href="https://www.instagram.com/letablitattoo"
+                target="_blank"
+                rel="noopener">@letablitattoo</a
+              >
+            </dd>
+          </div>
+        </dl>
+        <div>
+          <a
+            class="infos__map"
+            href="https://maps.google.com/?q=57+Rue+de+Bras,+14000+Caen"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="/assets/carte-letabli.png"
+              alt="Plan de situation : L'établi, 57 Rue de Bras à Caen"
+              loading="lazy"
+            />
+            <span class="infos__map-cue">Voir sur Google Maps →</span>
+          </a>
+        </div>
+
+        <!-- Bloc tarifs — ancre #tarifs -->
+        <div class="tarifs" id="tarifs">
+          <p class="subtitle">Tarifs</p>
+          <div class="tarifs__grid">
+            <div class="tarif">
+              <div class="tarif__text">
+                <p class="tarif__label">Tarif minimum</p>
+                <p class="tarif__note">Petit motif simple</p>
+              </div>
+              <p class="tarif__price">80€</p>
+            </div>
+            <div class="tarif">
+              <div class="tarif__text">
+                <p class="tarif__label">Tarif horaire</p>
+                <p class="tarif__note">Par heure de travail</p>
+              </div>
+              <p class="tarif__price">100€</p>
+            </div>
+            <div class="tarif">
+              <div class="tarif__text">
+                <p class="tarif__label">Tarif forfaitaire</p>
+                <p class="tarif__note">Journée complète</p>
+              </div>
+              <p class="tarif__price">400€</p>
+            </div>
+          </div>
+          <p class="tarifs__mention">
+            Les tarifs sont donnés à titre indicatif et peuvent varier en
+            fonction de la taille, de la complexité du motif, de l'emplacement
+            choisi et du temps de réalisation. Un devis précis est réalisé avant
+            chaque séance.
+          </p>
+        </div>
+
+        <!-- Bloc hygiène -->
+        <div class="infos__bottom">
+          <div class="hygiene">
+            <p class="subtitle">Hygiène &amp; sécurité</p>
+            <p>
+              Salon déclaré auprès de l'ARS de Normandie. Camcam et Momo sont
+              formées en hygiène et salubrité conformément à la réglementation
+              française. Matériel à usage unique, normes d'hygiène strictes.
+            </p>
+          </div>
+
+          <div class="acces">
+            <p class="subtitle">Paiement &amp; accès</p>
+            <ul role="list">
+              <li>CB, espèces · acompte à la réservation</li>
+              <li>Parking Saint-Pierre à 4 min</li>
+              <li>Accès tramway · arrêt Saint-Pierre</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use "../../styles/abstracts/breakpoints" as bp;
+  @use "../../styles/abstracts/mixins" as *;
+
+  .infos,
+  #tarifs {
+    scroll-margin-top: 80px;
+  }
+
+  .infos {
+    padding-block: var(--s-8);
+
+    @include bp.respond-to(desktop) {
+      padding-block: var(--s-9);
+    }
+  }
+
+  .infos__heading {
+    gap: var(--s-3);
+    display: flex;
+    flex-direction: column;
+
+    @include bp.respond-to(desktop) {
+      flex-direction: row;
+      justify-content: space-between;
+      grid-column: 1 / -1;
+      align-items: center;
+    }
+  }
+
+  .infos h2 {
+    color: var(--color-gold-bright);
+  }
+
+  .infos__layout {
+    display: grid;
+    gap: var(--s-6);
+    @include bp.respond-to(desktop) {
+      gap: var(--s-8);
+    }
+  }
+
+  .infos__map {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .infos__map img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .infos__content {
+    display: grid;
+    gap: var(--s-7);
+    @include bp.respond-to(desktop) {
+      grid-template-columns: 1fr 1.25fr;
+    }
+  }
+
+  .infos__details {
+    display: grid;
+    gap: var(--s-5);
+  }
+
+  .infos__details > div:first-child,
+  .infos__details > div:nth-child(2) {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid rgb(from var(--color-gold) r g b / 0.2);
+    padding-bottom: var(--s-5);
+  }
+
+  .tarifs,
+  .infos__bottom {
+    @include bp.respond-to(desktop) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .tarifs {
+    padding: var(--s-6);
+    background-color: var(--color-wall-deeper);
+    @include boiserie;
+    @include bp.respond-to(desktop) {
+      padding: var(--s-7);
+    }
+  }
+
+  .tarif {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--s-4);
+    border-bottom: 2px dotted rgb(from var(--color-gold) r g b / 0.3);
+    padding-bottom: var(--s-4);
+
+    @include bp.respond-to(desktop) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-bottom: none;
+      border-right: 2px dotted rgb(from var(--color-gold) r g b / 0.3);
+      gap: 0;
+    }
+  }
+
+  .tarif:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    @include bp.respond-to(desktop) {
+      border-right: none;
+    }
+  }
+
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: var(--s-6);
+
+    @include bp.respond-to(desktop) {
+      font-size: 32px;
+    }
+  }
+
+  .tarif__text {
+    @include bp.respond-to(desktop) {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .tarifs__grid {
+    display: grid;
+    gap: var(--s-4);
+    margin-block: var(--s-6);
+    @include bp.respond-to(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .tarif__price {
+    font-family: var(--f-display);
+    font-size: 28px;
+    @include bp.respond-to(desktop) {
+      font-size: 56px;
+    }
+  }
+
+  .tarif__note {
+    letter-spacing: 0.22em;
+    font-size: 11px;
+  }
+
+  .tarifs__mention {
+    max-width: none;
+  }
+
+  .hygiene,
+  .acces {
+    border: 1px solid var(--color-gold-deep);
+    padding: var(--s-5);
+    background: rgb(from var(--color-wall-deeper) r g b / 0.75);
+  }
+
+  .infos__bottom {
+    display: grid;
+    gap: var(--s-5);
+    @include bp.respond-to(desktop) {
+      grid-template-columns: 1.6fr 1fr;
+    }
+  }
+</style>

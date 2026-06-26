@@ -11,12 +11,12 @@ réel et de livrable de gestion de projet pour l'évaluation.
 
 ## Structure du tableau
 
-| Colonne | Rôle |
-|---|---|
-| **Backlog** | Tout ce qui est identifié mais pas encore planifié |
-| **À faire** | Prêt à démarrer dans les prochaines sessions |
-| **En cours** | Travail actif — WIP limit : 3 cartes maximum |
-| **Terminé** | Done selon les critères ci-dessous |
+| Colonne      | Rôle                                               |
+| ------------ | -------------------------------------------------- |
+| **Backlog**  | Tout ce qui est identifié mais pas encore planifié |
+| **À faire**  | Prêt à démarrer dans les prochaines sessions       |
+| **En cours** | Travail actif — WIP limit : 3 cartes maximum       |
+| **Terminé**  | Done selon les critères ci-dessous                 |
 
 ---
 
@@ -56,18 +56,18 @@ Une carte passe en **Terminé** si et seulement si :
 
 ## Étiquettes
 
-| Étiquette | Usage |
-|---|---|
-| `design` | Décisions visuelles, moodboard, wireframes, tokens |
-| `dev` | Code, intégration, composants |
-| `contenu` | Textes, photos, assets à récupérer |
-| `admin` | Domaine, hébergement, mentions légales |
-| `doc` | Documentation, specs, fichiers de référence |
-| `priorité haute` | Bloquant pour la suite |
-| `priorité moyenne` | Important mais pas bloquant immédiatement |
-| `priorité basse` | À faire mais peut attendre |
-| `bloqué` | En attente d'un élément externe |
-| `bug` | Anomalie à corriger |
+| Étiquette          | Usage                                              |
+| ------------------ | -------------------------------------------------- |
+| `design`           | Décisions visuelles, moodboard, wireframes, tokens |
+| `dev`              | Code, intégration, composants                      |
+| `contenu`          | Textes, photos, assets à récupérer                 |
+| `admin`            | Domaine, hébergement, mentions légales             |
+| `doc`              | Documentation, specs, fichiers de référence        |
+| `priorité haute`   | Bloquant pour la suite                             |
+| `priorité moyenne` | Important mais pas bloquant immédiatement          |
+| `priorité basse`   | À faire mais peut attendre                         |
+| `bloqué`           | En attente d'un élément externe                    |
+| `bug`              | Anomalie à corriger                                |
 
 ---
 
