@@ -50,4 +50,10 @@
   --f-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
   --f-body: "DM Sans", -apple-system, "Segoe UI", sans-serif;
   --f-hand: "Caveat", "Bradley Hand", cursive;
+
+  //  Tokens sémentiques
+  
+  --page-bg: var(--color-wall-dark);
+  --surface-header: var(--color-wall-dark);
+  --surface-footer: var(--color-wall-deeper);
 }

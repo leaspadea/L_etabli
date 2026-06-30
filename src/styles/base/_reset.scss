@@ -1,33 +1,29 @@
 // Reset moderne — adapté d'Andy Bell
 
-// 1. Box-sizing universel
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-// 2. Suppression des marges par défaut
 * {
   margin: 0;
   padding: 0;
 }
 
-// 3. Empêche le débordement horizontal et installe le smooth scroll
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
-// 4. Hauteur de ligne par défaut plus lisible que la valeur du navigateur (~1.2)
 body {
   min-height: 100vh;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
-// 5. Les médias deviennent responsive par défaut
 img,
 picture,
 video,
@@ -38,8 +34,6 @@ svg {
   height: auto;
 }
 
-// 6. Les éléments de form héritent de la police du document
-// (par défaut le navigateur leur applique une police système moche)
 input,
 button,
 textarea,
@@ -47,7 +41,6 @@ select {
   font: inherit;
 }
 
-// 7. Évite les débordements de mots très longs
 p,
 h1,
 h2,
@@ -58,14 +51,11 @@ h6 {
   overflow-wrap: break-word;
 }
 
-// 8. Listes non stylisées par défaut quand elles ont un role aria
-// (utile pour les nav sémantiques sans bullets visuelles)
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
 }
 
-// 9. Respecte l'absence de mouvement préférée par l'utilisateur
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

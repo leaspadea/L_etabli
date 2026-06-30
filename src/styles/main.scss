@@ -1,6 +1,9 @@
 @use "abstracts/breakpoints";
 @use "abstracts/variables";
 
+@use "base/themes";
 @use "base/reset";
 @use "base/typography";
 @use "base/base";
+
+@use "components/gallery";

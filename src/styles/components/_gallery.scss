@@ -1,0 +1,110 @@
+@use "../abstracts/breakpoints" as bp;
+@use "../abstracts/mixins" as *;
+
+.gallery {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-2);
+    padding-block: var(--s-8);
+
+    @include bp.respond-to(desktop) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--s-4);
+    }
+}
+
+.gallery__thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgb(from var(--color-ink) r g b / 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-8);
+    flex-direction: column;
+    gap: var(--s-4);
+}
+
+.lightbox__counter {
+    color: var(--color-plaster-cream);
+    font-family: var(--f-body);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.lightbox__image {
+    width: min(70vw, 70vh, 480px);
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    background: var(--color-wall-patina);
+    font-size: 4rem;
+    @include bp.respond-to(desktop) {
+        width: min(80vw, 80vh, 600px);
+    }
+
+}
+
+.lightbox__nav,
+.lightbox__close {
+    @include gold-sheen;
+    background: transparent;
+    color: var(--color-gold-bright);
+    border-radius: 5%;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-ink);
+    }
+}
+
+.lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+
+}
+
+.lightbox__nav--prev {
+    left: var(--s-3);
+
+    @include bp.respond-to(desktop) {
+        left: var(--s-7);
+    }
+}
+
+.lightbox__nav--next {
+    right: var(--s-3);
+
+    @include bp.respond-to(desktop) {
+        right: var(--s-7);
+    }
+}
+
+.lightbox__close {
+    position: absolute;
+    top: var(--s-3);
+    right: var(--s-3);
+    padding: var(--s-2) var(--s-3);
+    font-family: var(--f-body);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+
+    @include bp.respond-to(desktop) {
+        top: var(--s-7);
+        right: var(--s-7);
+    }
+}

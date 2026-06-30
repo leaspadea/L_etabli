@@ -1,0 +1,14 @@
+---
+import Container from "../layout/Container.astro";
+import Gallery from "./Gallery.tsx";
+---
+<section class="galerie">
+  <Container>
+    <header class="galerie__header">
+      <h2>Galerie.</h2>
+    </header>
+
+    <Gallery client:visible />
+  </Container>
+</section>
+

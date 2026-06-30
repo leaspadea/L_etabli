@@ -7,7 +7,7 @@ body {
   font-size: 16px;
   line-height: 1.7;
   color: var(--color-plaster-cream);
-  background-color: var(--color-wall-dark);
+  background-color: var(--page-bg);
 
   @include bp.respond-to(desktop) {
     font-size: 17px;
@@ -38,6 +38,7 @@ h1 {
 h2 {
   font-size: 36px;
   line-height: 0.95;
+  color: var(--color-gold-bright);
 
   @include bp.respond-to(desktop) {
     font-size: 72px;

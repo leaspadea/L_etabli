@@ -1,0 +1,63 @@
+---
+import Container from "../layout/Container.astro";
+---
+
+<section>
+    <Container>
+        <div class="bio__grid">
+            <h2>Mon parcours.</h2>
+            <div class="bio__photo" aria-hidden="true">photo à venir</div>
+            <div class="bio__text">
+                <p>[Bio placeholder — texte d'environ 10 lignes à récupérer auprès de Camcam. Elle parle de son parcours, son approche, ce qui la distingue. Treize ans d'expérience, le déclic du tatouage, le passage à l'ouverture du salon, sa vision du métier.]</p>
+                <p>[Deuxième paragraphe — son rapport au tatouage noir et gris, pourquoi ce style, son inspiration, ses références. Ce qui l'a amenée à privilégier ce style. Ce qu'elle ne tatouera jamais.]</p>
+                <p>[Troisième paragraphe — sa vision du salon, l'envie de bienveillance et de prise de temps, l'écoute avant tout.]</p>
+            </div>
+        </div>
+    </Container>
+</section>
+
+<style lang="scss">
+    @use "../../styles/abstracts/breakpoints" as bp;
+
+    .bio__grid {
+        display: grid;
+        gap: var(--s-6);
+        padding-block: var(--s-8);
+
+        grid-template-areas:
+            "title"
+            "photo"
+            "text";
+
+        @include bp.respond-to(desktop) {
+            grid-template-columns: 1fr 1.65fr;
+            grid-template-areas:
+                "photo title"
+                "photo text";
+            column-gap: var(--s-8);
+            align-items: start;
+        }
+    }
+
+    h2 {
+        grid-area: title;
+    }
+    .bio__photo {
+        grid-area: photo;
+    }
+    .bio__text {
+        grid-area: text;
+        display: flex;
+        flex-direction: column;gap: var(--s-4);
+    }
+
+    .bio__photo {
+        aspect-ratio: 4 / 5;
+        background: var(--color-wall-patina);
+        border: 1px solid var(--color-gold-shadow);
+        display: grid;
+        place-items: center;
+        color: var(--color-gray-muted);
+        font-style: italic;
+    }
+</style>
