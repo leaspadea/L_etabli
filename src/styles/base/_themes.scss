@@ -1,6 +1,10 @@
 
 .theme-camcam {
   --page-bg: var(--color-ink);
-  --surface-footer: var(--color-ink-soft);
-  --surface-header: var(--color-ink-soft);
+  --text-primary: var(--color-plaster-cream);
+}
+
+.theme-momo {
+  --page-bg: var(--color-plaster-pale);
+  --text-primary: var(--color-ink);
 }

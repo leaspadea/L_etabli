@@ -1,0 +1,108 @@
+---
+import Container from "../layout/Container.astro";
+---
+
+<section>
+    <Container>
+        <div class="bio__grid">
+            <div class="bio__photo" aria-hidden="true">photo à venir</div>
+            <h2>Mon parcours.</h2>
+            <div class="bio__text">
+                <p>
+                    Coucou ! Moi c'est Momo,je suis spécialisée dans le tatouage
+                    manga et jeux vidéo. J'aime les choses délicates, les
+                    détails, les couleurs douces et tout ce qui fait sourire.
+                </p>
+
+                <blockquote class="bio__quote">
+                    « N'hésite pas à m'écrire, je ne mords pas, je serai toute
+                    douce, juré ! »
+                </blockquote>
+
+                <p>
+                    Amie et collègue de CamCam depuis 2021 (fière progéniture de
+                    Vanity Street 🖤), je suis aujourd'hui aussi sa coéquipière
+                    dans cette nouvelle aventure qu'est son tout jeune bébé :
+                    L'Établi. Depuis toute petite, j'évolue dans un univers
+                    nourri par la rêverie, les jeux vidéo et les mangas. Comme
+                    beaucoup, c'est ce qui m'a donné envie de dessiner, pour
+                    recréer tous ces mondes qui me faisaient rêver.
+                </p>
+                <p>
+                    Je suis quelqu'un de calme, sensible et passionnée, avec
+                    toujours l'envie de m'améliorer pour répondre au mieux à vos
+                    projets. J'aborde chaque tattoo qu'on me confie avec
+                    douceur, bienveillance, créativité — et surtout beaucoup de
+                    cœur — pour retranscrire vos envies comme il se doit !
+                </p>
+            </div>
+        </div>
+    </Container>
+</section>
+
+<style lang="scss">
+    @use "../../styles/abstracts/breakpoints" as bp;
+
+    .bio__grid {
+        display: grid;
+        gap: var(--s-6);
+        padding-block: var(--s-8);
+
+        grid-template-areas:
+            "title"
+            "photo"
+            "text";
+
+        @include bp.respond-to(desktop) {
+            grid-template-columns: 1.65fr 1fr;
+            grid-template-areas:
+                "title photo"
+                "text photo";
+            column-gap: var(--s-8);
+            align-items: start;
+        }
+    }
+
+    h2 {
+        grid-area: title;
+        padding-block: var(--s-2);
+    }
+
+    .bio__text {
+        grid-area: text;
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-4);
+    }
+
+    .bio__text p:first-of-type::first-letter {
+        float: left;
+        font-family: var(--f-display);
+        font-weight: 500;
+        font-size: 88px;
+        line-height: 0.8;
+        padding-right: var(--s-3);
+        color: var(--color-dado-burgundy);
+    }
+
+    .bio__quote {
+        margin: 0;
+        font-family: var(--f-display);
+        font-style: italic;
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        line-height: 1.35;
+        border-left: 2px solid var(--color-momo-rose);
+        padding-left: var(--s-5);
+    }
+
+    .bio__photo {
+        aspect-ratio: 4 / 5;
+        background: var(--color-wall-patina);
+        border: 1px solid var(--color-gold-shadow);
+        display: grid;
+        place-items: center;
+        color: var(--color-gray-muted);
+        font-style: italic;
+        grid-area: photo;
+    }
+</style>

@@ -1,0 +1,89 @@
+---
+import Container from "../layout/Container.astro";
+---
+
+<section>
+    <Container>
+        <div class="styles__grid">
+            <h2>Ce que je tatoue.</h2>
+            <div class="styles__text">
+                <ul role="list">
+                    <li>Manga &amp; anime</li>
+                    <li>Jeux vidéo</li>
+                    <li>Couleur</li>
+                    <li>Délicat &amp; doux</li>
+                    <li>Mignonneries</li>
+                </ul>
+            </div>
+            <div class="styles__photo" aria-hidden="true">détail à venir</div>
+        </div>
+    </Container>
+</section>
+
+<style lang="scss">
+    @use "../../styles/abstracts/breakpoints" as bp;
+
+    .styles__grid {
+        display: grid;
+        gap: var(--s-6);
+        padding-block: var(--s-8);
+
+        grid-template-areas:
+            "title"
+            "text"
+            "photo";
+
+        @include bp.respond-to(desktop) {
+            grid-template-columns: 1fr 1.65fr;
+            grid-template-areas:
+                "photo title "
+                "photo text ";
+            column-gap: var(--s-8);
+            align-items: start;
+        }
+    }
+
+    h2 {
+        grid-area: title;
+    }
+
+    .styles__text {
+        grid-area: text;
+    }
+
+    .styles__text ul {
+        font-family: var(--f-display);
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        line-height: 1.6;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .styles__text li {
+        position: relative;
+        padding-left: 1.2em;
+    }
+
+    .styles__text li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 0.55em;
+        height: 0.55em;
+        background: var(--color-momo-rose);
+        -webkit-mask: url("/assets/ink-blot.svg") center / contain no-repeat;
+        mask: url("/assets/ink-blot.svg") center / contain no-repeat;
+    }
+
+    .styles__photo {
+        aspect-ratio: 4 / 5;
+        background: var(--color-wall-patina);
+        border: 1px solid var(--color-gold-shadow);
+        display: grid;
+        place-items: center;
+        color: var(--color-gray-muted);
+        font-style: italic;
+        grid-area: photo;
+    }
+</style>
