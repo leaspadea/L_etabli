@@ -1,0 +1,127 @@
+---
+import Container from "../layout/Container.astro";
+---
+
+<section class="contact">
+    <Container>
+        <div class="contact__grid">
+            <h2>Me contacter.</h2>
+
+            <div class="signature" aria-label="Signature Camcam" role="img">
+            </div>
+
+            <div class="contact__body">
+                <dl class="contact__details">
+                    <div>
+                        <dt class="eyebrow">Instagram</dt>
+                        <dd>
+                            <a
+                                href="https://www.instagram.com/camcamh_tattoo"
+                                target="_blank"
+                                rel="noopener">@camcamh_tattoo</a
+                            >
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt class="eyebrow">Adresse mail</dt>
+                        <dd>
+                            <a href="mailto:letablitattooshop@gmail.com"
+                                >letablitattooshop@gmail.com</a
+                            >
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt class="eyebrow">Téléphone</dt>
+                        <dd><a href="tel:+33214748856">02 14 74 88 56</a></dd>
+                    </div>
+                </dl>
+
+                <a class="contact__tarifs" href="/#tarifs">→ Voir les tarifs</a>
+            </div>
+        </div>
+    </Container>
+
+    <style lang="scss">
+        @use "../../styles/abstracts/breakpoints" as bp;
+
+        .contact__grid {
+            display: grid;
+            gap: var(--s-6);
+            padding-block: var(--s-8);
+
+            grid-template-areas:
+                "title"
+                "text"
+                "photo";
+
+            @include bp.respond-to(desktop) {
+                grid-template-columns: 1fr 1.65fr;
+                grid-template-areas:
+                    "photo title"
+                    "photo text";
+                column-gap: var(--s-8);
+                align-items: start;
+            }
+        }
+
+        h2 {
+            grid-area: title;
+        }
+
+        .contact__tarifs {
+            margin-top: var(--s-8);
+            padding-top: var(--s-4);
+            border-top: 1px solid var(--color-gold-shadow);
+            font-size: 15px;
+            color: var(--color-gray-muted);
+        }
+
+        .contact__details dd {
+            margin: 0;
+        }
+
+        .contact__details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--s-6);
+            @include bp.respond-to(desktop) {
+                grid-template-columns: 1fr 1.25fr;
+            }
+        }
+
+        .contact__details dd {
+            font-family: var(--f-display);
+            font-style: italic;
+            font-size: clamp(1.75rem, 5vw, 2.2rem);
+        }
+
+        .contact__body {
+            grid-area: text;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signature {
+            grid-area: photo;
+            background-color: var(--color-plaster-cream);
+            -webkit-mask: url("/assets/signature_camcam.png") center / contain
+                no-repeat;
+            mask: url("/assets/signature_camcam.png") center / contain no-repeat;
+            justify-self: end;
+            width: min(200px, 60%);
+            aspect-ratio: 1 / 1;
+            transform: rotate(1deg);
+            margin-top: calc(var(--s-6) * -1);
+
+            @include bp.respond-to(desktop) {
+                justify-self: stretch;
+                width: 100%;
+                aspect-ratio: 4 / 5;
+                transform: none;
+                margin-top: 0;
+            }
+        }
+    </style>
+</section>

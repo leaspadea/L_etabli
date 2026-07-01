@@ -25,16 +25,29 @@ import Container from "../layout/Container.astro";
 
 <style lang="scss">
     @use "../../styles/abstracts/breakpoints" as bp;
+    @use "../../styles/abstracts/mixins" as *;
 
     .hero__grid {
         display: grid;
+        margin-top: var(--s-6);
         gap: var(--s-6);
-        padding-block: var(--s-8);
-
+        border: 1px solid var(--color-gold-shadow);
+        @include boiserie(10px, -8px);
+        border: 6px solid transparent;
+        border-image: linear-gradient(
+                135deg,
+                var(--color-gold-deep),
+                var(--color-gold-bright),
+                var(--color-gold),
+                var(--color-gold-bright),
+                var(--color-gold-deep)
+            ) 1;
+        padding: var(--s-6);
         @include bp.respond-to(desktop) {
             grid-template-columns: 1fr 1fr;
             gap: var(--s-8);
             align-items: center;
+            padding: var(--s-8);
         }
     }
 
@@ -51,7 +64,6 @@ import Container from "../layout/Container.astro";
         line-height: 0.85;
         font-size: clamp(3.5rem, 12vw, 10.5rem);
     }
-
 
     .hero__intro {
         gap: var(--s-2);
